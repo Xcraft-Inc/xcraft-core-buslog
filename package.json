@@ -1,0 +1,24 @@
+{
+  "name": "xcraft-core-buslog",
+  "version": "0.1.0",
+  "description": "Xcraft client bus logger",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "xcraft",
+    "logs"
+  ],
+  "repository": {
+    "type": "file",
+    "url": "lib/xcraft-core-buslog"
+  },
+  "author": "Mathieu Schroeter",
+  "license": "MIT",
+  "dependencies": {
+    "xcraft-core-busclient": "0.1.0",
+    "xcraft-core-log": "0.1.0"
+  },
+  "devDependencies": {}
+}
