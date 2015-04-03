@@ -20,9 +20,9 @@ exports.info = function () {
 };
 
 exports.warn = function () {
-  log ('info', arguments);
+  log ('warn', arguments);
 };
 
 exports.err = function () {
-  log ('info', arguments);
+  log ('err', arguments);
 };
