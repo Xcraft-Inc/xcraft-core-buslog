@@ -4,7 +4,7 @@ var moduleName = 'buslog';
 
 var util = require ('util');
 
-var busClient = require ('xcraft-core-busclient');
+var busClient = require ('xcraft-core-busclient').global;
 var xLog      = require ('xcraft-core-log') (moduleName);
 
 
