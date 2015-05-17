@@ -26,3 +26,11 @@ exports.warn = function () {
 exports.err = function () {
   log ('err', arguments);
 };
+
+exports.progress = function (topic, position, length) {
+  busClient.events.send ('widget.progress', {
+    topic:    topic,
+    position: position,
+    length:   length
+  });
+};
