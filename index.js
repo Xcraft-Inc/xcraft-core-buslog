@@ -7,13 +7,16 @@ var util = require ('util');
 var busClient = require ('xcraft-core-busclient').global;
 var xLog      = require ('xcraft-core-log') (moduleName);
 
+var prefix = '.:GreatHall:. ';
+
 
 var log = function (mode, args) {
   xLog[mode].apply (this, args);
 
   var text = util.format.apply (this, Array.prototype.slice.call (args));
   busClient.events.send ('widget.text.' + mode, {
-    text: text
+    prefix: prefix,
+    text:   text
   });
 };
 
@@ -31,6 +34,7 @@ exports.err = function () {
 
 exports.progress = function (topic, position, length) {
   busClient.events.send ('widget.progress', {
+    prefix:   prefix,
     topic:    topic,
     position: position,
     length:   length
