@@ -12,7 +12,9 @@ var log = function (mode, args) {
   xLog[mode].apply (this, args);
 
   var text = util.format.apply (this, Array.prototype.slice.call (args));
-  busClient.events.send ('widget.text.' + mode, text);
+  busClient.events.send ('widget.text.' + mode, {
+    text: text
+  });
 };
 
 exports.info = function () {
