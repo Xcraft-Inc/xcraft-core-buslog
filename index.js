@@ -7,7 +7,7 @@ var util = require ('util');
 var busClient = require ('xcraft-core-busclient').global;
 var xLog      = require ('xcraft-core-log') (moduleName);
 
-var prefix = '.:GreatHall:. ';
+var prefix = 'GreatHall: ';
 
 
 var log = function (mode, args) {
