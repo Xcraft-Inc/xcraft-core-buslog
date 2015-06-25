@@ -11,7 +11,7 @@ var prefix = 'GreatHall: ';
 
 
 var log = function (mode, args) {
-  xLog[mode].apply (this, args);
+  xLog[mode].apply (xLog, args);
 
   var text = util.format.apply (this, Array.prototype.slice.call (args));
   busClient.events.send ('widget.text.' + mode, {
