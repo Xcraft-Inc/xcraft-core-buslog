@@ -13,7 +13,11 @@ var log = function (mode, msg) {
   });
 };
 
-module.exports = function (xLog) {
+module.exports = function (xLog, level) {
+  if (typeof level !== 'undefined') {
+    xLog.setVerbosity (level, true);
+  }
+
   xLog.getLevels ().forEach (function (level) {
     xLog.on (level, function (msg) {
       log (level, msg);
