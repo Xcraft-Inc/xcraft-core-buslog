@@ -14,9 +14,17 @@ function BusLog (xLog, busClient) {
       self.log (level, msg);
     });
   });
+
+  self._blacklist = [/^bus(?:|\/.*)$/, /^busclient(?:|\/.*)$/, /^server(?:|\/.*)$/];
 }
 
 BusLog.prototype.log = function (mode, msg) {
+  if (this._blacklist.some (function (mod) {
+    return mod.test (msg.moduleName);
+  })) {
+    return;
+  }
+
   if (!this._busClient || !this._busClient.isConnected ()) {
     return;
   }
