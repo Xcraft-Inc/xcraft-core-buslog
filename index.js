@@ -3,9 +3,10 @@
 var prefix = 'GreatHall';
 
 
-function BusLog (xLog) {
+function BusLog (xLog, busClient) {
   var self = this;
 
+  self._busClient = busClient;
   self._xLog = xLog;
 
   self._xLog.getLevels ().forEach (function (level) {
@@ -16,12 +17,11 @@ function BusLog (xLog) {
 }
 
 BusLog.prototype.log = function (mode, msg) {
-  var busClient = require ('xcraft-core-busclient').global;
-  if (!busClient.isConnected ()) {
+  if (!this._busClient || !this._busClient.isConnected ()) {
     return;
   }
 
-  busClient.events.send ('widget.text.' + mode, {
+  this._busClient.events.send ('widget.text.' + mode, {
     prefix: prefix,
     mod:    msg.moduleName,
     text:   msg.message
@@ -29,12 +29,11 @@ BusLog.prototype.log = function (mode, msg) {
 };
 
 BusLog.prototype.progress = function (topic, position, length) {
-  var busClient = require ('xcraft-core-busclient').global;
-  if (!busClient.isConnected ()) {
+  if (!this._busClient || !this._busClient.isConnected ()) {
     return;
   }
 
-  busClient.events.send ('widget.progress', {
+  this._busClient.events.send ('widget.progress', {
     prefix:   prefix,
     mod:      this._xLog.getModuleName (),
     topic:    topic,
@@ -43,6 +42,6 @@ BusLog.prototype.progress = function (topic, position, length) {
   });
 };
 
-module.exports = function (xLog) {
-  return new BusLog (xLog);
+module.exports = function (xLog, busClient) {
+  return new BusLog (xLog, busClient);
 };
