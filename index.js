@@ -3,10 +3,10 @@
 var prefix = 'GreatHall';
 
 
-function BusLog (xLog, busClient) {
+function BusLog (xLog, response) {
   var self = this;
 
-  self._busClient = busClient;
+  self._response = response;
   self._xLog = xLog;
 
   self._xLog.getLevels ().forEach (function (level) {
@@ -17,11 +17,11 @@ function BusLog (xLog, busClient) {
 }
 
 BusLog.prototype.log = function (mode, msg) {
-  if (!this._busClient || !this._busClient.isConnected ()) {
+  if (!this._response || !this._response.isConnected ()) {
     return;
   }
 
-  this._busClient.events.send ('widget.text.' + mode, {
+  this._response.events.send ('widget.text.' + mode, {
     prefix: prefix,
     mod:    msg.moduleName,
     text:   msg.message
@@ -29,11 +29,11 @@ BusLog.prototype.log = function (mode, msg) {
 };
 
 BusLog.prototype.progress = function (topic, position, length) {
-  if (!this._busClient || !this._busClient.isConnected ()) {
+  if (!this._response || !this._response.isConnected ()) {
     return;
   }
 
-  this._busClient.events.send ('widget.progress', {
+  this._response.events.send ('widget.progress', {
     prefix:   prefix,
     mod:      this._xLog.getModuleName (),
     topic:    topic,
