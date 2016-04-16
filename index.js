@@ -42,6 +42,6 @@ BusLog.prototype.progress = function (topic, position, length) {
   });
 };
 
-module.exports = function (xLog, busClient) {
-  return new BusLog (xLog, busClient);
+module.exports = function (xLog, resp) {
+  return new BusLog (xLog, resp);
 };
