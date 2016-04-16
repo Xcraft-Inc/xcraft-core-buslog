@@ -23,7 +23,7 @@ BusLog.prototype.log = function (mode, msg) {
 
   this._response.events.send ('widget.text.' + mode, {
     prefix: prefix,
-    mod:    msg.moduleName,
+    mod:    msg.module,
     text:   msg.message
   });
 };
@@ -35,7 +35,7 @@ BusLog.prototype.progress = function (topic, position, length) {
 
   this._response.events.send ('widget.progress', {
     prefix:   prefix,
-    mod:      this._xLog.getModuleName (),
+    mod:      this._xLog.getModule (),
     topic:    topic,
     position: position,
     length:   length
