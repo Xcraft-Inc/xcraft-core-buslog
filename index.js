@@ -2,7 +2,6 @@
 
 var prefix = 'GreatHall';
 
-
 function BusLog (xLog, response) {
   var self = this;
 
@@ -23,8 +22,8 @@ BusLog.prototype.log = function (mode, msg) {
 
   this._response.events.send ('widget.text.' + mode, {
     prefix: prefix,
-    mod:    msg.module,
-    text:   msg.message
+    mod: msg.module,
+    text: msg.message,
   });
 };
 
@@ -34,11 +33,11 @@ BusLog.prototype.progress = function (topic, position, length) {
   }
 
   this._response.events.send ('widget.progress', {
-    prefix:   prefix,
-    mod:      this._xLog.getModule (),
-    topic:    topic,
+    prefix: prefix,
+    mod: this._xLog.getModule (),
+    topic: topic,
     position: position,
-    length:   length
+    length: length,
   });
 };
 
