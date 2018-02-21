@@ -1,4 +1,3 @@
-
 # xcraft-core-buslog
 
 Bridge for the logs provided by `xcraft-core-log` and the Xcraft bus.
@@ -12,8 +11,8 @@ to send the logs to the GitLab CI server too.
 
 ## Events
 
-- `widget.text.verb`
-- `widget.text.info`
-- `widget.text.warn`
-- `widget.text.err`
-- `widget.progress`
+* `widget.text.verb`
+* `widget.text.info`
+* `widget.text.warn`
+* `widget.text.err`
+* `widget.progress`
