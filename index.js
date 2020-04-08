@@ -8,14 +8,14 @@ function BusLog(xLog, resp) {
   self._resp = resp;
   self._xLog = xLog;
 
-  self._xLog.getLevels().forEach(function(level) {
-    self._xLog.on(level, function(msg) {
+  self._xLog.getLevels().forEach(function (level) {
+    self._xLog.on(level, function (msg) {
       self.log(level, msg);
     });
   });
 }
 
-BusLog.prototype.log = function(mode, msg) {
+BusLog.prototype.log = function (mode, msg) {
   if (!this._resp || !this._resp.isConnected()) {
     return;
   }
@@ -27,7 +27,7 @@ BusLog.prototype.log = function(mode, msg) {
   });
 };
 
-BusLog.prototype.progress = function(topic, position, length) {
+BusLog.prototype.progress = function (topic, position, length) {
   if (!this._resp || !this._resp.isConnected()) {
     return;
   }
@@ -41,6 +41,6 @@ BusLog.prototype.progress = function(topic, position, length) {
   });
 };
 
-module.exports = function(xLog, resp) {
+module.exports = function (xLog, resp) {
   return new BusLog(xLog, resp);
 };
