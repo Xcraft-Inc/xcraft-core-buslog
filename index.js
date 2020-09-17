@@ -20,6 +20,20 @@ BusLog.prototype.log = function (mode, msg) {
     return;
   }
 
+  if (
+    (msg.overwatch || mode === 'err') &&
+    this._resp.hasCommand &&
+    this._resp.hasCommand('overwatch.exception')
+  ) {
+    this._resp.command.send('overwatch.exception', {
+      error: {
+        ...(msg.overwatch || {err: msg.message}),
+        mod: msg.module,
+        time: msg.time,
+      },
+    });
+  }
+
   this._resp.events.send('widget.text.' + mode, {
     prefix: prefix,
     mod: msg.module,
