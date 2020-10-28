@@ -15,4 +15,5 @@ to send the logs to the GitLab CI server too.
 - `widget.text.info`
 - `widget.text.warn`
 - `widget.text.err`
+- `widget.text.dbg`
 - `widget.progress`

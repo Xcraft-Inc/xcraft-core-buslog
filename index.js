@@ -19,6 +19,7 @@ function BusLog(xLog, resp) {
     info: null,
     warn: null,
     err: null,
+    dbg: null,
   };
 
   this._subscribe();
