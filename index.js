@@ -63,7 +63,6 @@ BusLog.prototype.log = function (mode, msg) {
     this._resp.command.send('overwatch.exception', {
       error: {
         ...(msg.overwatch || {err: msg.message}),
-        id: msg.overwatch.id,
         mod: msg.module,
         time: msg.time,
       },
