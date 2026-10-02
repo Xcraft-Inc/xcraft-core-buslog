@@ -101,19 +101,23 @@ module.exports = function (xLog, resp) {
 };
 
 module.exports.addModes = function (modes) {
+  const prevModes = currentModes;
   if (modes === 0) {
     currentModes = ~0;
   } else {
     currentModes |= modes;
   }
+  return currentModes !== prevModes;
 };
 
 module.exports.delModes = function (modes) {
+  const prevModes = currentModes;
   if (modes === 0) {
     currentModes = 0;
   } else {
     currentModes &= ~modes;
   }
+  return currentModes !== prevModes;
 };
 
 module.exports.getModes = function () {
